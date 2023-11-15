@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drumming App</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .drum {
+      border: 2px solid #333;
+      padding: 20px;
+      margin: 10px;
+      cursor: pointer;
+      background-color: #fff;
+      transition: background-color 0.3s;
+    }
+
+    .drum:hover {
+      background-color: red;
+    }
+
+    .drum img {
+      max-width: 300px;
+      max-height: 300px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Drumming App</h1>
+
+  <div id="content">
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      const drumData = [
+        { name: 'Snare Drum', image: 'snare-drum.jpg' },
+        { name: 'Bass Drum', image: 'bass-drum.jpg' },
+        { name: 'Hi-Hat', image: 'hi-hat.jpg' },
+        { name: 'Tom-Tom', image: 'tom-tom.jpg' }
+      ];
+
+      const drumContainer = $('#content');
+      drumData.forEach(drum => {
+        const drumElement = $(`
+          <div class="drum">
+            <img src="${drum.image}" alt="${drum.name}">
+            ${drum.name}
+          </div>
+        `);
+
+        drumContainer.append(drumElement);
+
+        drumElement.on('click', function () {
+          alert(`You clicked on ${drum.name}!`);
+        });
+      });
+  
+      const usageInstructions = "For usage instructions, use doc.pdf";
+      console.log(usageInstructions);
+    });
+  </script>
+
+</body>
+</html>
